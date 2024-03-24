@@ -5,7 +5,8 @@ const HomeView = () => {
   return (
     <div className="home-container">
       <div className="content">
-        <h1>Welcome to Our Website</h1>
+        <h1>Welcome to event tracker</h1>
+        <h2>Track your events and subscribe to them</h2>
         <p>Choose an option below to get started:</p>
         <div className="button-container">
           <Link to="/register" className="submit-button">Register</Link>
