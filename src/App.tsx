@@ -1,8 +1,9 @@
-import HomeView from './views/home/registration';
+import Home from "./pages/Home";
 
 function App() {
+
   return (
-    <HomeView></HomeView>
+    <Home></Home>
   )
   
 

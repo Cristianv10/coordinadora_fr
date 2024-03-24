@@ -1,4 +1,4 @@
-import HomeView from "../views/home/registration"
+import HomeView from "../views/home/Home"
 
 const Home = () => {
     return  (

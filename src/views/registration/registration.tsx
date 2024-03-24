@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../../src/App.css';
 
-const HomeView = () => {
+const RegistrationView = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -82,15 +82,14 @@ const HomeView = () => {
                 required
               />
             </div>
-            <button type="submit">Register</button>
-          </form>
+            <button type="submit" className="submit-button">Register</button>          </form>
         </div>
       </div>
     </>
   );
 }
 
-export default HomeView;
+export default RegistrationView;
 
 
 
