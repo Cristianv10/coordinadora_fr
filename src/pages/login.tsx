@@ -1,4 +1,4 @@
-import LoginView from '../../src/views/login/login.tsx'
+import LoginView from '../views/login/Login.tsx'
 const LoginPage = () => {
     return  (
         <LoginView></LoginView>
