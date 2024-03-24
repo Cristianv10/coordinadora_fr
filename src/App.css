@@ -11,18 +11,23 @@
   width: 100%;
 }
 
+.register-icon {
+  width: 200px;
+  height: auto; 
+}
+
 .text-container {
   padding: 20px;
   background-color: #f0f0f0;
-  border-top-left-radius: 20px; /* Border radius específico para el lado del texto */
-  border-bottom-left-radius: 20px; /* Border radius específico para el lado del texto */
+  border-top-left-radius: 20px; 
+  border-bottom-left-radius: 20px;
 }
 
 .card {
   padding: 20px;
   background-color: #f0f0f0;
-  border-top-right-radius: 20px; /* Border radius específico para el lado del formulario */
-  border-bottom-right-radius: 20px; /* Border radius específico para el lado del formulario */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .text-container h2 {
@@ -88,5 +93,23 @@ input[type="password"] {
 @media screen and (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
+
+  }
+  .text-container {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .card {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+
   }
 }

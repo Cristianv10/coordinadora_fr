@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../../../src/App.css';
+import register from '../../assets/register.svg'
 
 const RegistrationView = () => {
     const [formData, setFormData] = useState({
@@ -35,6 +36,8 @@ const RegistrationView = () => {
         <div className="text-container">
           <h2>Create a event subscription account</h2>
           <p>Please fill out the form to create your account.</p>
+          <img src={register} alt="Register Icon" className="register-icon" />
+
         </div>
         <div className="card">
           <form onSubmit={handleSubmit}>
