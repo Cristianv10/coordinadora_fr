@@ -1,8 +1,6 @@
 import { useState } from "react";
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import VisibilityOff  from '@material-ui/icons/VisibilityOff';
 import Visibility from '@material-ui/icons/Visibility';
-
-
 interface PasswordInputProps {
   value: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,7 +18,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ value, handleChange, id, 
 
   return (
     <div style={{position: 'relative', display: 'inline-block', width: '95.4%'}}>
-      <input
+      <input className="form-inputs"
         type={showPassword ? "text" : "password"}
         id={id}
         name={name}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import PasswordInput from "../components/PasswordField";
+import TextInput from "../components/TextInput";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -30,14 +31,14 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={handleChange}
-                required
-              />
+              <TextInput
+              value={email}
+              handleChange={handleChange}
+              id="email"
+              name="email"
+               type="email"
+               required
+               />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>

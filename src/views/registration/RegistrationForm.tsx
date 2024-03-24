@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import PasswordInput from "../components/PasswordField";
+import TextInput from "../components/TextInput";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -37,25 +38,25 @@ const RegistrationForm = () => {
         <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleChange}
-                required
-              />
+              <TextInput
+              value={username}
+              handleChange={handleChange}
+              id="username"
+              name="username"
+               type="username"
+               required
+               />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={handleChange}
-                required
-              />
+              <TextInput
+              value={email}
+              handleChange={handleChange}
+              id="email"
+              name="email"
+               type="email"
+               required
+               />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
