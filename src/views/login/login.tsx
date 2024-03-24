@@ -3,8 +3,6 @@ import register from '../../assets/login.svg'
 import LoginForm from './LoginForm';
 
 const LoginView = () => {
-
-
     return (
     <>
       <div className="grid-container">

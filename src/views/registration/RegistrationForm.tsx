@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import PasswordInput from "../components/PasswordField";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -58,24 +59,22 @@ const RegistrationForm = () => {
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-                required
+              <PasswordInput
+              value={password}
+              handleChange={handleChange}
+              id="password"
+              name="password"
+              required
               />
             </div>
             <div className="form-group">
               <label htmlFor="verifyPassword">Verify Password:</label>
-              <input
-                type="password"
-                id="verifyPassword"
-                name="verifyPassword"
-                value={verifyPassword}
-                onChange={handleChange}
-                required
+              <PasswordInput
+              value={verifyPassword}
+              handleChange={handleChange}
+              id="verifyPassword"
+              name="verifyPassword"
+              required
               />
             </div>
             <button type="submit" className="submit-button">Register</button>          </form>

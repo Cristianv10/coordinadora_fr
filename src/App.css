@@ -90,6 +90,31 @@ input[type="password"] {
   text-align: center;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #93e1ea;
+  color: white;
+  padding: 10px 0;
+  z-index: 100;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  color: rgb(7, 7, 7);
+  text-decoration: none;
+}
+
+
 @media screen and (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;

@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import PasswordInput from "../components/PasswordField";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: '',
-    verifyPassword: '',
   });
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   console.log('Formulario enviado:', formData);
+  navigate('/home')
 };
 
   const { email, password } = formData;
@@ -39,13 +41,12 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-                required
+              <PasswordInput
+              value={password}
+              handleChange={handleChange}
+              id="password"
+              name="password"
+              required
               />
             </div>
             <button type="submit" className="submit-button">Log in</button>
