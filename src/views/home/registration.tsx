@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../../src/App.css';
 
-const RegistrationView = () => {
+const HomeView = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -90,7 +90,7 @@ const RegistrationView = () => {
   );
 }
 
-export default RegistrationView;
+export default HomeView;
 
 
 

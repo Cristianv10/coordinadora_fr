@@ -1,10 +1,8 @@
-import './App.css';
-import RegistrationView from './views/registration/registration';
+import HomeView from './views/home/registration';
 
 function App() {
-
   return (
-    <RegistrationView></RegistrationView>
+    <HomeView></HomeView>
   )
   
 
