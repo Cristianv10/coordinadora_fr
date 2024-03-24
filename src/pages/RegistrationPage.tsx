@@ -1,4 +1,4 @@
-import RegistrationView from "../views/registration/registration"
+import RegistrationView from "../views/registration/Registration"
 
 const RegistrationPage = () => {
     return  (

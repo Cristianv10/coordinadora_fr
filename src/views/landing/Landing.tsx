@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HomeView = () => {
+const LandingView = () => {
   return (
     <div className="home-container">
       <div className="content">
@@ -17,7 +17,7 @@ const HomeView = () => {
   );
 }
 
-export default HomeView;
+export default LandingView;
 
 
 <button type="submit">Register</button>
