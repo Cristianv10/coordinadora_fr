@@ -34,6 +34,10 @@
   margin-top: 0;
 }
 
+.event-title{
+  margin-top: 0;
+}
+
 .text-container p {
   margin-bottom: 0;
 }
@@ -55,16 +59,6 @@ label {
   border-radius: 5px;
 }
 
-/* input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 90%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-} */
-
 .submit-button {
   background-color: #007bff;
   color: #fff;
@@ -76,6 +70,29 @@ input[type="password"] {
 }
 
 .submit-button:hover {
+  background-color: #0056b3;
+}
+
+.event-button {
+  background-color: #94a3b3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.event-button-save {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.event-button:hover {
   background-color: #0056b3;
 }
 
@@ -122,11 +139,28 @@ nav a {
   text-decoration: none;
 }
 
+.grid-container-event {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.event {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
 
 @media screen and (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
 
+  }
+  .grid-container-event {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
   .text-container {
     padding: 20px;
@@ -144,5 +178,12 @@ nav a {
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
 
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .grid-container-event {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
