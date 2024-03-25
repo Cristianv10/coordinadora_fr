@@ -1,6 +1,6 @@
 import { useState } from "react";
-import VisibilityOff  from '@material-ui/icons/VisibilityOff';
-import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Visibility from "@material-ui/icons/Visibility";
 interface PasswordInputProps {
   value: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -9,7 +9,13 @@ interface PasswordInputProps {
   required?: boolean;
 }
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ value, handleChange, id, name, required }) => {
+const PasswordInput: React.FC<PasswordInputProps> = ({
+  value,
+  handleChange,
+  id,
+  name,
+  required,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleShowPassword = () => {
@@ -17,30 +23,33 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ value, handleChange, id, 
   };
 
   return (
-    <div style={{position: 'relative', display: 'inline-block', width: '95.4%'}}>
-      <input className="form-inputs"
+    <div
+      style={{ position: "relative", display: "inline-block", width: "95.4%" }}
+    >
+      <input
+        className="form-inputs"
         type={showPassword ? "text" : "password"}
         id={id}
         name={name}
         value={value}
         onChange={handleChange}
         required={required}
-        style={{paddingRight: '30px'}}
+        style={{ paddingRight: "30px" }}
       />
-      <span 
-        onClick={toggleShowPassword} 
+      <span
+        onClick={toggleShowPassword}
         style={{
-          position: 'absolute', 
-          right: '10px', 
-          top: '50%', 
-          transform: 'translateY(-50%)', 
-          cursor: 'pointer'
+          position: "absolute",
+          right: "10px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
         }}
       >
         {showPassword ? <VisibilityOff /> : <Visibility />}
       </span>
     </div>
   );
-}
+};
 
 export default PasswordInput;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const LandingView = () => {
   return (
@@ -9,15 +9,18 @@ const LandingView = () => {
         <h2>Track your events and subscribe to them</h2>
         <p>Choose an option below to get started:</p>
         <div className="button-container">
-          <Link to="/register" className="submit-button">Register</Link>
-          <Link to="/login" className="submit-button">Login</Link>
+          <Link to="/register" className="submit-button">
+            Register
+          </Link>
+          <Link to="/login" className="submit-button">
+            Login
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default LandingView;
 
-
-<button type="submit">Register</button>
+<button type="submit">Register</button>;

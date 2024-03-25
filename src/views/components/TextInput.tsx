@@ -9,9 +9,18 @@ interface TextInputProps {
   required?: boolean;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ value, handleChange, id, name, type, required }) => {
+const TextInput: React.FC<TextInputProps> = ({
+  value,
+  handleChange,
+  id,
+  name,
+  type,
+  required,
+}) => {
   return (
-    <div style={{position: 'relative', display: 'inline-block', width: '95.4%'}}>
+    <div
+      style={{ position: "relative", display: "inline-block", width: "95.4%" }}
+    >
       <input
         className="form-inputs"
         type={type}
@@ -20,10 +29,10 @@ const TextInput: React.FC<TextInputProps> = ({ value, handleChange, id, name, ty
         value={value}
         onChange={handleChange}
         required={required}
-        style={{paddingRight: '30px'}}
+        style={{ paddingRight: "30px" }}
       />
     </div>
   );
-}
+};
 
 export default TextInput;
