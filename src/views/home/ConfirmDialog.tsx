@@ -26,9 +26,23 @@ const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
           justifyContent: "center",
           alignItems: "center",
           width: "300px",
+          position: "relative",
         },
       }}
     >
+      <button
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "5px",
+          background: "none",
+          border: "none",
+          fontSize: "1em",
+        }}
+        onClick={onClose}
+      >
+        ×
+      </button>
       <div style={{ textAlign: "center" }}>
         <h2>Confirmar cambios</h2>
         <div
