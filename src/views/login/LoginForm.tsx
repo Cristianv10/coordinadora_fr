@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import PasswordInput from "../components/PasswordField";
 import TextInput from "../components/TextInput";
+import userService from "../../services/users";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -18,10 +19,18 @@ const LoginForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Formulario enviado:", formData);
-    navigate("/home");
+    const accountData = {
+      email: formData.email,
+      password: formData.password,
+    };
+    try {
+      userService.login(accountData);
+      navigate("/home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const { email, password } = formData;

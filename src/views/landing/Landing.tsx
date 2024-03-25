@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
 const LandingView = () => {
+  const token = localStorage.getItem("token");
+  const id = localStorage.getItem("id");
+
+  console.log("Token:", token);
+  console.log("ID:", id);
+
   return (
     <div className="home-container">
       <div className="content">

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+  };
   return (
     <nav>
       <ul>
@@ -11,7 +15,9 @@ const Navbar = () => {
           <Link to="/events">My Events</Link>
         </li>
         <li>
-          <Link to="/">Log Out</Link>
+          <Link to="/" onClick={handleLogout}>
+            Log Out
+          </Link>
         </li>
       </ul>
     </nav>
