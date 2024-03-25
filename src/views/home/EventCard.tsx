@@ -3,8 +3,12 @@ import ConfirmationDialog from "./ConfirmDialog";
 
 interface Event {
   id: number;
-  title: string;
+  name: string;
+  city: string;
   description: string;
+  details: string;
+  date: string;
+  participants: number;
 }
 
 interface EventCardProps {
@@ -14,8 +18,13 @@ interface EventCardProps {
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
   const [counter, setCounter] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const totalParticipants = 100;
 
+  const date = new Date(event.date);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  console.log(event);
   const handleIncrement = () => {
     setCounter(counter + 1);
   };
@@ -43,9 +52,12 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
       <div key={event.id} className="event">
         <p
           style={{ textAlign: "right", fontSize: "10px", marginBottom: "0px" }}
-        >{`Total participants: ${totalParticipants}`}</p>
-        <h3 className="event-title">{event.title}</h3>
-        <p className="event-p">{event.description}</p>
+        >{`Total participants: ${event.participants}`}</p>
+        <h3 className="event-title">{event.name}</h3>
+        <p className="event-p">
+          {event.city} - {`${day}/${month}/${year}`}
+        </p>
+        <p className="event-p">{event.details}</p>
         <div
           style={{
             display: "grid",

@@ -11,6 +11,15 @@ class eventService {
       throw new Error(message);
     }
   }
+  async getEvents(): Promise<any> {
+    try {
+      const { data } = await api.get("/get-all-events");
+      return data;
+    } catch (error) {
+      const message = String(error);
+      throw new Error(message);
+    }
+  }
 }
 
 export default new eventService();
