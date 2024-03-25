@@ -7,6 +7,9 @@ interface TextInputProps {
   name: string;
   type: string;
   required?: boolean;
+  pattern?: string;
+  placeholder?: string;
+  max?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -16,6 +19,8 @@ const TextInput: React.FC<TextInputProps> = ({
   name,
   type,
   required,
+  placeholder,
+  max,
 }) => {
   return (
     <div
@@ -30,6 +35,8 @@ const TextInput: React.FC<TextInputProps> = ({
         onChange={handleChange}
         required={required}
         style={{ paddingRight: "30px" }}
+        placeholder={placeholder}
+        max={max}
       />
     </div>
   );

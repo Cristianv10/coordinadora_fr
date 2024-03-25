@@ -4,13 +4,6 @@ import { useEffect } from "react";
 
 const HomePage = () => {
   const navigate = useNavigate();
-
-  const token = localStorage.getItem("token");
-  const id = localStorage.getItem("id");
-
-  console.log("Token:", token);
-  console.log("ID:", id);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
