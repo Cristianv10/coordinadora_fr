@@ -1,4 +1,4 @@
-import Navbar from "./NavBar";
+import Navbar from "../components/NavBar";
 import EventCard from "./EventCard";
 
 const HomeView = () => {
