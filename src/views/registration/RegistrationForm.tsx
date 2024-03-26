@@ -1,25 +1,41 @@
-import { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import {
+  setUsername,
+  setEmail,
+  setPassword,
+  setVerifyPassword,
+  resetForm,
+} from "../../store/registerReducer";
 import PasswordInput from "../components/PasswordField";
 import userService from "../../services/users";
 import TextInput from "../components/TextInput";
+import { useAppSelector } from "../../store";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    verifyPassword: "",
-  });
+  const dispatch = useDispatch();
+  const formData = useAppSelector((state) => state.registrationForm);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    switch (name) {
+      case "username":
+        dispatch(setUsername(value));
+        break;
+      case "email":
+        dispatch(setEmail(value));
+        break;
+      case "password":
+        dispatch(setPassword(value));
+        break;
+      case "verifyPassword":
+        dispatch(setVerifyPassword(value));
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,6 +54,7 @@ const RegistrationForm = () => {
       const data = userService.createAccount(accountData);
       console.log(data);
       navigate("/login");
+      dispatch(resetForm());
     } catch (error) {
       console.error(error);
     }
@@ -92,7 +109,7 @@ const RegistrationForm = () => {
         </div>
         <button type="submit" className="submit-button">
           Register
-        </button>{" "}
+        </button>
       </form>
     </>
   );

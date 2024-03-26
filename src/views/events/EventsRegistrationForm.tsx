@@ -1,25 +1,44 @@
-import { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import {
+  setName,
+  setDate,
+  setCity,
+  setParticipants,
+  setDetails,
+  resetForm,
+} from "../../store/eventReducer";
 import eventService from "../../services/events";
 import TextInput from "../components/TextInput";
+import { useAppSelector } from "../../store";
 
 const EventsRegistrationForm = () => {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    city: "",
-    participants: "",
-    details: "",
-  });
+  const dispatch = useDispatch();
+  const formData = useAppSelector((state) => state.eventRegistrationForm);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    switch (name) {
+      case "name":
+        dispatch(setName(value));
+        break;
+      case "date":
+        dispatch(setDate(value));
+        break;
+      case "city":
+        dispatch(setCity(value));
+        break;
+      case "participants":
+        dispatch(setParticipants(value));
+        break;
+      case "details":
+        dispatch(setDetails(value));
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,11 +52,11 @@ const EventsRegistrationForm = () => {
       details: formData.details,
       user_id: localStorage.getItem("id"),
     };
-    console.log(accountData);
     try {
       const data = eventService.createEvent(accountData);
       console.log(data);
       navigate("/home");
+      dispatch(resetForm());
     } catch (error) {
       console.error(error);
     }

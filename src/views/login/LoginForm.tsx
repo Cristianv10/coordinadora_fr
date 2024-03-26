@@ -1,29 +1,31 @@
-import { useState } from "react";
+// LoginForm.tsx
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import PasswordInput from "../components/PasswordField";
 import TextInput from "../components/TextInput";
 import userService from "../../services/users";
+import { setEmail, setPassword } from "../../store/loginReducer";
+import { useAppSelector } from "../../store";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const dispatch = useDispatch();
+  const { email, password } = useAppSelector((state) => state.login);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    if (name === "email") {
+      dispatch(setEmail(value));
+    } else if (name === "password") {
+      dispatch(setPassword(value));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const accountData = {
-      email: formData.email,
-      password: formData.password,
+      email: email,
+      password: password,
     };
     try {
       userService.login(accountData);
@@ -32,8 +34,6 @@ const LoginForm = () => {
       console.error(error);
     }
   };
-
-  const { email, password } = formData;
 
   return (
     <>
