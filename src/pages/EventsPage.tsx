@@ -5,9 +5,11 @@ import EventsView from "../../src/views/events/Events";
 const EventsPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
+    console.log("token", localStorage.getItem("token"));
+
     const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/");
+    if (token !== undefined && token !== null) {
+      navigate("/home");
     }
   }, [navigate]);
   return <EventsView />;

@@ -28,7 +28,7 @@ const LoginForm = () => {
       password: password,
     };
     try {
-      userService.login(accountData);
+      await userService.login(accountData);
       navigate("/home");
     } catch (error) {
       console.error(error);
