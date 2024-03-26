@@ -4,6 +4,11 @@ import Navbar from "../components/NavBar";
 import EventCard from "./EventCard";
 const HomeView = () => {
   const [events, setEvents] = useState([]);
+  const [update, setUpdate] = useState(false);
+
+  const handleUpdate = () => {
+    setUpdate((prevUpdate) => !prevUpdate);
+  };
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -16,7 +21,7 @@ const HomeView = () => {
     };
 
     fetchEvents();
-  }, []);
+  }, [update]);
 
   // ...
 
@@ -25,7 +30,7 @@ const HomeView = () => {
       <Navbar></Navbar>
       <div className="grid-container-event">
         {events.map((event) => (
-          <EventCard event={event} />
+          <EventCard event={event} onUpdate={handleUpdate} />
         ))}
       </div>
     </>

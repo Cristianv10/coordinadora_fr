@@ -1,5 +1,7 @@
 import { useState } from "react";
 import ConfirmationDialog from "./ConfirmDialog";
+import eventService from "../../services/events";
+import { useNavigate } from "react-router";
 
 interface Event {
   id: number;
@@ -13,18 +15,20 @@ interface Event {
 
 interface EventCardProps {
   event: Event;
+  onUpdate: () => void;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ event }) => {
+const EventCard: React.FC<EventCardProps> = ({ event, onUpdate }) => {
   const [counter, setCounter] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [action, setAction] = useState<"update" | "delete">("update");
+  const navigate = useNavigate();
 
   const date = new Date(event.date);
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  console.log(event);
   const handleIncrement = () => {
     setCounter(counter + 1);
   };
@@ -35,7 +39,8 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
     }
   };
 
-  const openModal = () => {
+  const openModal = (action: "update" | "delete") => {
+    setAction(action);
     setModalIsOpen(true);
   };
 
@@ -43,15 +48,36 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
     setModalIsOpen(false);
   };
 
-  const confirmChanges = () => {
+  const confirmChanges = async () => {
+    if (action === "update") {
+      const data = {
+        id: event.id,
+        participants: counter,
+      };
+      await eventService.updateEvent(data);
+      setCounter(0);
+    } else if (action === "delete") {
+      await eventService.deleteEvent(event.id);
+    }
     setModalIsOpen(false);
+    onUpdate();
+    navigate("/home");
   };
 
   return (
     <>
       <div key={event.id} className="event">
+        <button
+          style={{
+            marginLeft: "90%",
+            fontSize: "8px",
+          }}
+          onClick={() => openModal("delete")}
+        >
+          X
+        </button>
         <p
-          style={{ textAlign: "right", fontSize: "10px", marginBottom: "0px" }}
+          style={{ textAlign: "left", fontSize: "10px", marginBottom: "0px" }}
         >{`Total participants: ${event.participants}`}</p>
         <h3 className="event-title">{event.name}</h3>
         <p className="event-p">
@@ -75,7 +101,10 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <div style={{ marginTop: "8px", marginBottom: "8px", width: "250px" }}>
           <span>{`You are adding ${counter} participants`}</span>
         </div>
-        <button className="event-button-save" onClick={openModal}>
+        <button
+          className="event-button-save"
+          onClick={() => openModal("update")}
+        >
           Guardar
         </button>
         <ConfirmationDialog
